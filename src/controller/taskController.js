@@ -21,8 +21,8 @@ async function storeTask(request, response) {
                 .status(400)
                 .json({
                     success: false,
-                    message: "Ops! Não seu...",
-                    query: err.sql,
+                    message: "Ops! Não sei...",
+                    query: err,
                     sqlMessage: err.sqlMessage
                 });
         }
