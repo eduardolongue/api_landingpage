@@ -1,24 +1,21 @@
-let button = document.getElementById("handleSubmit");
+let docTitle = document.title;
+window.addEventListener("blur", () =>{
+    document.title = "Voltar ao SFOOD";
+})
+window.addEventListener("focus", () =>{
+    document.title = docTitle;
+})
+const questions = document.querySelectorAll(".question");
+questions.forEach((question) => {
+    question.addEventListener("click", () => {
+        question.classList.toggle("active");
 
-button.onclick = async function(e){
-    e.preventDefault();
-    let title = document.getElementById("title").value;
-    let description = document.getElementById("description").value;
-    let data = {title, description}
+        const answer = question.nextElementSibling;
 
-    
-    const response = await fetch("http://localhost:3000/api/store/task", {
-        method: "POST",
-        headers: {"Content-type": "application/json;charset=UTF-8"},
-        body: JSON.stringify(data)
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+        } else {
+            answer.style.display = "block";
+        }
     });
-
-    let content = await response.json();
-
-    if(content.success) {
-        alert("Sucesso")
-    } else {
-        alert("Não")
-    }
-};
-
+});z
